@@ -1,7 +1,7 @@
 $(document).ready(function () {
   var timeData = [],
     temperatureData = [],
-    humidityData = [];
+    lightData = [];
   var data = {
     labels: timeData,
     datasets: [
@@ -18,14 +18,14 @@ $(document).ready(function () {
       },
       {
         fill: false,
-        label: 'Humidity',
-        yAxisID: 'Humidity',
+        label: 'Light',
+        yAxisID: 'Light',
         borderColor: "rgba(24, 120, 240, 1)",
         pointBoarderColor: "rgba(24, 120, 240, 1)",
         backgroundColor: "rgba(24, 120, 240, 0.4)",
         pointHoverBackgroundColor: "rgba(24, 120, 240, 1)",
         pointHoverBorderColor: "rgba(24, 120, 240, 1)",
-        data: humidityData
+        data: lightData
       }
     ]
   }
@@ -33,7 +33,7 @@ $(document).ready(function () {
   var basicOption = {
     title: {
       display: true,
-      text: 'Temperature & Humidity Real-time Data',
+      text: 'Edwards Temperature & Light Real-time Data',
       fontSize: 36
     },
     scales: {
@@ -41,15 +41,15 @@ $(document).ready(function () {
         id: 'Temperature',
         type: 'linear',
         scaleLabel: {
-          labelString: 'Temperature(C)',
+          labelString: 'Temperature(F)',
           display: true
         },
         position: 'left',
       }, {
-          id: 'Humidity',
+          id: 'Light',
           type: 'linear',
           scaleLabel: {
-            labelString: 'Humidity(%)',
+            labelString: 'Light(Lum)',
             display: true
           },
           position: 'right'
@@ -87,11 +87,11 @@ $(document).ready(function () {
         temperatureData.shift();
       }
 
-      if (obj.humidity) {
-        humidityData.push(obj.humidity);
+      if (obj.light) {
+        lightData.push(obj.light);
       }
-      if (humidityData.length > maxLen) {
-        humidityData.shift();
+      if (lightData.length > maxLen) {
+        lightData.shift();
       }
 
       myLineChart.update();
