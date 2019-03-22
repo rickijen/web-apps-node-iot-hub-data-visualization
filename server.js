@@ -32,8 +32,9 @@ wss.broadcast = function broadcast(data) {
 var iotHubReader = new iotHubClient(process.env['Azure.IoT.IoTHub.ConnectionString'], process.env['Azure.IoT.IoTHub.ConsumerGroup']);
 iotHubReader.startReadMessage(function (obj, date) {
   try {
-    console.log(date);
-    console.log('NOW ' + Date.now());
+    //console.log(date);
+    //console.log('NOW ' + Date.now());
+    console.log('LATENCY = ' + (Date.now() - date));
     date = date || Date.now()
     wss.broadcast(JSON.stringify(Object.assign(obj, { time: moment.utc(date).format('YYYY:MM:DD[T]hh:mm:ss') })));
   } catch (err) {
