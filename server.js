@@ -1,3 +1,8 @@
+//App Insights
+const appInsights = require("applicationinsights");
+appInsights.setup(process.env['APPINSIGHTS_INSTRUMENTATIONKEY']);
+appInsights.start();
+
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
