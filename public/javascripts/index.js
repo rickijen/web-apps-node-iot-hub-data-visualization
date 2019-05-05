@@ -33,7 +33,7 @@ $(document).ready(function () {
   var basicOption = {
     title: {
       display: true,
-      text: 'Edwards Temperature & Light Real-time Data',
+      text: 'Temperature & Light Real-time Data',
       fontSize: 36
     },
     scales: {
